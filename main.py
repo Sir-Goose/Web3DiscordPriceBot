@@ -1,13 +1,9 @@
-import time
-
 import discord
 import os
 import requests
 import json
 
 import csv
-
-from discord.ext.commands import bot
 
 import FtmEco
 import deiDeus
@@ -16,7 +12,6 @@ import gstGmt
 import colorTest
 import historicalPrice
 import quote
-import statusUpdater
 
 client = discord.Client()
 
@@ -39,6 +34,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    with open("messages.txt", "a") as external_file:
+        add_text = message.content
+        print(add_text, file=external_file)
+        external_file.close()
 
     if message.author == client.user:
         return
@@ -72,11 +71,13 @@ async def on_message(message):
 
     if message.content.startswith('$imp'):
         command = message.content
+        command = "$p imp"
         tokenFormattedPrice = anyPrice.get_any_price(command, dict_from_csv)
         await message.channel.send(tokenFormattedPrice)
 
     if message.content.startswith('$IMP'):
         command = message.content
+        command = "$p imp"
         tokenFormattedPrice = anyPrice.get_any_price(command, dict_from_csv)
         await message.channel.send(tokenFormattedPrice)
 
@@ -108,5 +109,14 @@ async def on_message(message):
         crvPrice = FtmEco.get_crv_price()
         await message.channel.send(crvPrice)
 
+    words = message.content
+    print(words)
+    words = words.split()
+    length = len(words)
+    i = 0
+    while i < length:
+        if words[i] == 'meta':
+            await message.channel.send("Did you mean Facebook?")
+        i = i + 1
 
 client.run('')
