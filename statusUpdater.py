@@ -7,6 +7,7 @@ from web3 import Web3, HTTPProvider
 import discord
 import requests
 import json
+import random
 
 cg = CoinGeckoAPI()
 
@@ -31,10 +32,9 @@ async def update_status():
 
 async def update_status_loop():
     print("looping")
-    while 1 == 1:
+    while True:
         await update_status()
-        await asyncio.sleep(300)
-
+        await asyncio.sleep(random.randint(300, 400))
 
 
 
@@ -108,4 +108,4 @@ def pricetoname():
     return game
 
 
-client.run('')
+client.run('OTU5MjExNzkyODg0NzI3ODM4.Go6Lim.bT8kZ7nOeQ7JznW-N-Dobh3uoS_8RoZhOPsfwA')
