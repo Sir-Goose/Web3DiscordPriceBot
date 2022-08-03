@@ -108,4 +108,4 @@ def pricetoname():
     return game
 
 
-client.run('OTU5MjExNzkyODg0NzI3ODM4.Go6Lim.bT8kZ7nOeQ7JznW-N-Dobh3uoS_8RoZhOPsfwA')
+client.run('')
