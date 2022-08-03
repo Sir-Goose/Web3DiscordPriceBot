@@ -11,12 +11,14 @@ cg = CoinGeckoAPI()
 def get_any_price(command, dict_from_csv):
     # split message into array to isolate token ticker
     commandArray = command.split()
-    commandArray[1] = commandArray[1].lower()
-    print(commandArray[1])
+
+    if len(commandArray) > 1:
+        commandArray[1] = commandArray[1].lower()
+        print(commandArray[1])
 
     # check for imp as no coingecko listing
-    if commandArray[1] == "imp":
-        print("imp")
+    if commandArray[1] == "imp" or commandArray[0] == "$imp" or commandArray[0] == "$IMP":
+        print("penis")
         # declare variables
         rpc_url = "https://rpc.ftm.tools/"
         web3 = Web3(Web3.HTTPProvider(rpc_url))
