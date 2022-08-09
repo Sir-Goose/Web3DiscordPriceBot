@@ -25,9 +25,16 @@ async def on_ready():
 
 
 async def update_status():
-    game = pricetoname()
-    await client.change_presence(activity=discord.Game(name=game))
-    print("status updated")
+    try:
+        game = price_to_name()
+    except:
+        ...
+    try:
+        await client.change_presence(activity=discord.Game(name=game))
+        print("status updated")
+    except:
+        print("Status update failed")
+
 
 
 async def update_status_loop():
@@ -39,7 +46,7 @@ async def update_status_loop():
 
 
 
-def pricetoname():
+def price_to_name():
     rpc_url = "https://rpc.ftm.tools/"
     web3 = Web3(Web3.HTTPProvider(rpc_url))
 
@@ -108,4 +115,4 @@ def pricetoname():
     return game
 
 
-client.run('')
+client.run('OTU5MjExNzkyODg0NzI3ODM4.GJ18jI.7fGKn0SYERRoZtTZa9ZTIjG3F0X3lHoP7aG3-o')
