@@ -117,7 +117,7 @@ async def on_message(message):
     length = len(words)
     i = 0
     while i < length:
-        if words[i] == 'meta':
+        if words[i].lower() == 'meta':
             await message.channel.send("Did you mean Facebook?", reference=message)
         i = i + 1
 
