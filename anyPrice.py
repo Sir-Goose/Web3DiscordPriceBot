@@ -94,6 +94,7 @@ def get_any_price(command, dict_from_csv):
         print(tokenPriceArray)
         tokenPrice = tokenPriceArray[tokenId]['usd']
         tokenPrice = round(tokenPrice, 2)
+        tokenPrice = '{:,}'.format(tokenPrice)
         tokenChange = tokenPriceArray[tokenId]['usd_24h_change']
         tokenChange = round(tokenChange, 2)
 
